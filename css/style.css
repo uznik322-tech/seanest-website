@@ -1186,6 +1186,45 @@ footer {
   }
 
 }
+/* Текстовые преимущества вместо числовых показателей. */
+.hero-stats {
+  display:grid;
+  grid-template-columns:1fr 1.2fr .85fr;
+  gap:24px;
+  max-width:660px;
+}
+.hero-stats>div+div {
+  padding-left:24px;
+}
+.hero-stats .stat-text {
+  display:block;
+  font-size:19px;
+  line-height:1.35;
+  letter-spacing:-.4px;
+}
+.hero-stats p {
+  font-size:11px;
+  line-height:1.65;
+  margin-top:10px;
+}
+@media(max-width:600px) {
+  .hero-stats {
+    grid-template-columns:1fr 1fr;
+    gap:22px 18px;
+  }
+  .hero-stats>div+div {
+    padding-left:18px;
+  }
+  .hero-stats>div:last-child {
+    grid-column:1 / -1;
+    border-left:0;
+    border-top:1px solid var(--line);
+    padding:18px 0 0;
+  }
+  .hero-stats .stat-text {
+    font-size:17px;
+  }
+}
 /* Компактные фотографии: снимки не растягиваются на весь экран. */
 :root {
   --photo-width:400px;
