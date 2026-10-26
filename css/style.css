@@ -651,18 +651,6 @@ legend {
   font-size:12px;
   margin:18px 0 0
 }
-#form-result {
-  border-top:1px solid var(--line);
-  margin-top:20px;
-  padding-top:15px;
-  font-size:12px
-}
-#form-result a {
-  display:block;
-  color:var(--sand);
-  text-decoration:underline;
-  margin-top:10px
-}
 footer {
   border-top:1px solid var(--line);
   padding:45px 0 22px;

@@ -4,7 +4,6 @@ const header = document.querySelector('#header');
 const menu = document.querySelector('.menu-toggle');
 const navigation = document.querySelector('#navigation');
 const form = document.querySelector('#request-form');
-const result = document.querySelector('#form-result');
 const selection = document.querySelector('#selected-property');
 const year = document.querySelector('#year');
 if (year) year.textContent = new Date().getFullYear();
@@ -46,16 +45,12 @@ if (form) {
   };
   form.addEventListener('input', () => {
     validate();
-    result.hidden = true;
-    result.replaceChildren();
   });
   document.querySelectorAll('[data-property]').forEach(link => {
     link.addEventListener('click', () => {
       form.elements.namedItem('property').value = link.dataset.property;
       selection.textContent = 'Выбранный объект: ' + link.dataset.property;
       selection.hidden = false;
-      result.hidden = true;
-      result.replaceChildren();
     });
   });
   form.addEventListener('submit', event => {
@@ -73,13 +68,8 @@ if (form) {
     ].join('\n');
     // Здесь можно подключить API обработки заявки вместо подготовки ссылки WhatsApp.
     // Запрос к API выполняйте только после проверки данных и явного действия пользователя.
-    const link = document.createElement('a');
-    link.href = 'https://wa.me/995591098301?text=' + encodeURIComponent(message);
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-    link.textContent = 'Перейти в WhatsApp и отправить сообщение ↗';
-    result.replaceChildren(document.createTextNode('Сообщение подготовлено. Заявка ещё не отправлена.'), link);
-    result.hidden = false;
+    // Переход в этой же вкладке не зависит от блокировщика всплывающих окон.
+    window.location.assign('https://wa.me/995591098301?text=' + encodeURIComponent(message));
   });
 }
 
